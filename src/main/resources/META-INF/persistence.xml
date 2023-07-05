@@ -16,8 +16,8 @@
             <property name="jakarta.persistence.jdbc.password" value="postgre"/>
             <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
 
-<!--            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL81Dialect"/>-->
-<!--            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/>-->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="false"/>
         </properties>
 
     </persistence-unit>
