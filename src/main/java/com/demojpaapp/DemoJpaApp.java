@@ -6,27 +6,10 @@ JAKARTA PERSISTENCE 3.1 DOC : https://jakarta.ee/specifications/persistence/3.1/
 * */
 package com.demojpaapp;
 
-import com.demojpaapp.entity.Employee;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
-import org.springframework.context.annotation.Bean;
 
 @ApplicationPath("/api")
 public class DemoJpaApp extends Application {
 
-    @Bean
-    public void initializeSomeDataToDB() {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("demojpaappdbpersistenceunit");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-
-        entityManager.getTransaction().begin();
-        entityManager.persist(new Employee("Chace", "Boris"));
-        entityManager.persist(new Employee("Thierry", "M."));
-        entityManager.getTransaction().commit();
-        entityManager.close();
-        entityManagerFactory.close();
-    }
 }
