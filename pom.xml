@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>demo</artifactId>
+    <artifactId>demojpaapp</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>demo</name>
+    <name>demojpaapp</name>
     <packaging>war</packaging>
 
     <properties>
@@ -18,6 +18,13 @@
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>6.0.8</version>
+        </dependency>
+
         <dependency> <!-- handles Context and Dependency Injection (CDI) -->
             <!-- includes : jakarta.enterprise.cdi-api, jakarta.ws.rs-api, jakarta.servlet-api -->
             <groupId>jakarta.platform</groupId>
@@ -25,6 +32,8 @@
             <version>10.0.0</version>
             <scope>provided</scope>
         </dependency>
+
+
 <!--        <dependency>-->
 <!--            <groupId>jakarta.enterprise</groupId>-->
 <!--            <artifactId>jakarta.enterprise.cdi-api</artifactId>-->
@@ -44,27 +53,20 @@
 <!--            <scope>provided</scope>-->
 <!--        </dependency>-->
         <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core-jakarta</artifactId>
             <version>5.6.15.Final</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.glassfish.jaxb</groupId>
-            <artifactId>jaxb-runtime</artifactId>
-            <version>3.0.2</version>
-        </dependency>
 <!--        <dependency>-->
-<!--            <groupId>org.junit.jupiter</groupId>-->
-<!--            <artifactId>junit-jupiter-api</artifactId>-->
-<!--            <version>${junit.version}</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.junit.jupiter</groupId>-->
-<!--            <artifactId>junit-jupiter-engine</artifactId>-->
-<!--            <version>${junit.version}</version>-->
-<!--            <scope>test</scope>-->
+<!--            <groupId>org.glassfish.jaxb</groupId>-->
+<!--            <artifactId>jaxb-runtime</artifactId>-->
+<!--            <version>3.0.2</version>-->
 <!--        </dependency>-->
 
         <dependency>
@@ -72,10 +74,23 @@
             <artifactId>postgresql</artifactId>
             <version>42.5.4</version>
         </dependency>
+
+        <!-- log4j2 logger needed dependencies FOR SPRING -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.20.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.20.0</version>
+        </dependency>
+        <!-- END log4j2 logger needed dependencies FOR SPRING -->
     </dependencies>
 
     <build>
-        <finalName>democdi</finalName>
+        <finalName>demojpaapp</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
