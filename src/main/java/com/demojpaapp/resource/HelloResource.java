@@ -1,8 +1,10 @@
 package com.demojpaapp.resource;
 
 import com.demojpaapp.entity.Employee;
-import com.demojpaapp.common.Response;
+//import com.demojpaapp.common.Response;
+import com.demojpaapp.resource.ifaces.IHelloResource;
 import com.demojpaapp.service.HelloService;
+import com.demojpaapp.utils.Response;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
@@ -11,7 +13,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @Path("/")
-public class HelloResource {
+public class HelloResource implements IHelloResource {
 
     private static final Logger LOG = LogManager.getLogger(HelloResource.class);
 
