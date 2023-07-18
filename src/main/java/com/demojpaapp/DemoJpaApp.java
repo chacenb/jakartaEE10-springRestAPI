@@ -11,5 +11,4 @@ import jakarta.ws.rs.core.Application;
 
 @ApplicationPath("/api")
 public class DemoJpaApp extends Application {
-
 }

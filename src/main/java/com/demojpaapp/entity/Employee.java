@@ -3,11 +3,12 @@ package com.demojpaapp.entity;
 import jakarta.persistence.*;
 
 @Entity
-@NamedQuery(name="GETALLEMPLOYEES", query="select E from Employee E")
+@NamedQuery(name = "GETALLEMPLOYEES", query = "select E from Employee E")
 @Table(schema = "demojpaappschema1")
 public class Employee {
     public Employee() {
     }
+
     @Id
     @Column(nullable = false)
     @GeneratedValue

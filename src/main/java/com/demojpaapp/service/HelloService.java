@@ -4,14 +4,16 @@ import com.demojpaapp.entity.Employee;
 import com.demojpaapp.persistence.HelloRepository;
 import com.demojpaapp.service.ifaces.IHelloService;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.Serializable;
 import java.util.List;
 
-@RequestScoped
-public class HelloService implements IHelloService {
+@SessionScoped
+public class HelloService implements IHelloService, Serializable {
     private static final Logger LOG = LogManager.getLogger(HelloService.class);
 
     @Inject
