@@ -9,8 +9,8 @@ package com.demojpaapp;
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
 
-@ApplicationPath("/api")
-public class DemoJpaApp extends Application {
+@ApplicationPath("/demoJpaJaxrsApi")
+public class DemoJpaJaxrsApi extends Application {
 
   /*  CHACE ADDED CODE : complete Exanple how to use entity manager   */
   /*
