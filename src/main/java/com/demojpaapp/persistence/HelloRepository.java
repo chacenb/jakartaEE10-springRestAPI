@@ -22,15 +22,6 @@ public class HelloRepository implements IHelloRepository, Serializable {
     private EntityManagerFactory entityManagerFactory;
     private EntityManager em;
 
-//    @Inject
-//    EntityManager em;
-//
-//    @PersistenceContext
-//    private EntityManager em;
-//
-//    @PersistenceContext(name = PERSISTENCE_UNIT)
-//    private EntityManager em;
-
     /* Spring calls the methods annotated with @PostConstruct only once, just after the initialization of bean*/
     @PostConstruct
     public void initHelloRepository() {

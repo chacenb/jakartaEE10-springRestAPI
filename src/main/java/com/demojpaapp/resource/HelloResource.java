@@ -19,19 +19,6 @@ public class HelloResource implements IHelloResource {
     @Inject
     private HelloService hService;
 
-    @Inject
-    private AppProperties properties;
-
-    @PostConstruct
-    public void readFromPropertiesFile() {
-//        CHACE_PROPERTY = properties.getProperty("CHACE_PROPERTY");
-//        CHACE_PROPERTY2 = getPropertiesFile().getProperty("CHACE_PROPERTY2", "property is undefined");
-        LOG.info("INSIDE HELLO RESOURCE read property is {}", properties);
-        LOG.info("{}", properties.file().getProperty("CHACE_PROPERTY"));
-        LOG.info("{}", properties.file().getProperty("CHACE_PROPERTY2"));
-    }
-
-
     public Response readPropertiesUsingMicroProfile() {
         hService.readPropertiesUsingMicroProfile();
         return new Response();
