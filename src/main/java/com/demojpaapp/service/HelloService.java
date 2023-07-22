@@ -1,41 +1,43 @@
 package com.demojpaapp.service;
 
+import com.demojpaapp.common.AppProperties;
 import com.demojpaapp.entity.Employee;
 import com.demojpaapp.persistence.HelloRepository;
 import com.demojpaapp.service.ifaces.IHelloService;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
-import org.apache.deltaspike.core.api.config.ConfigProperty;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 //import org.eclipse.microprofile.config.inject.ConfigProperty;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Properties;
+
+//import static com.demojpaapp.common.PropertiesReader.properties;
 
 //import static com.demojpaapp.common.FileReader.getPropertiesFile;
-import static com.demojpaapp.common.FileReader.properties;
+
 
 @SessionScoped
 public class HelloService implements IHelloService, Serializable {
     private static final Logger LOG = LogManager.getLogger(HelloService.class);
 
-//    private  String CHACE_PROPERTY;
-    private final String CHACE_PROPERTY = properties.getProperty("CHACE_PROPERTY");;
-    private final String CHACE_PROPERTY2 = properties.getProperty("CHACE_PROPERTY2");;
+    @Inject
+    private AppProperties read;
 
-//    @Inject
-//    @ConfigProperty(name = "anotherProperty", defaultValue = "cannot read property")
+    private String CHACE_PROPERTY;// = properties.getProperty("CHACE_PROPERTY");
+    private String CHACE_PROPERTY2;//= properties.getProperty("CHACE_PROPERTY2");
     private String anotherProperty;
 
     @PostConstruct
     public void readFromPropertiesFile() {
 //        CHACE_PROPERTY = properties.getProperty("CHACE_PROPERTY");
 //        CHACE_PROPERTY2 = getPropertiesFile().getProperty("CHACE_PROPERTY2", "property is undefined");
+        LOG.info("INSIDE HELLO SERVICE read property is {}", read);
+
+        LOG.info("{}", read.file().getProperty("CHACE_PROPERTY"));
+        LOG.info("{}", read.file().getProperty("CHACE_PROPERTY2"));
     }
 
     @Inject

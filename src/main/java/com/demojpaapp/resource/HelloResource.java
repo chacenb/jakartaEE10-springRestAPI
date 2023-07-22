@@ -1,14 +1,13 @@
 package com.demojpaapp.resource;
 
+import com.demojpaapp.common.AppProperties;
 import com.demojpaapp.entity.Employee;
 import com.demojpaapp.common.Response;
 import com.demojpaapp.resource.ifaces.IHelloResource;
 import com.demojpaapp.service.HelloService;
+import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.validation.Valid;
-import jakarta.ws.rs.*;
-import jakarta.ws.rs.core.MediaType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,6 +18,19 @@ public class HelloResource implements IHelloResource {
 
     @Inject
     private HelloService hService;
+
+    @Inject
+    private AppProperties properties;
+
+    @PostConstruct
+    public void readFromPropertiesFile() {
+//        CHACE_PROPERTY = properties.getProperty("CHACE_PROPERTY");
+//        CHACE_PROPERTY2 = getPropertiesFile().getProperty("CHACE_PROPERTY2", "property is undefined");
+        LOG.info("INSIDE HELLO RESOURCE read property is {}", properties);
+        LOG.info("{}", properties.file().getProperty("CHACE_PROPERTY"));
+        LOG.info("{}", properties.file().getProperty("CHACE_PROPERTY2"));
+    }
+
 
     public Response readPropertiesUsingMicroProfile() {
         hService.readPropertiesUsingMicroProfile();

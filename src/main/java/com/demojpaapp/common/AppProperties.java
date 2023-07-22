@@ -1,13 +1,13 @@
 package com.demojpaapp.common;
 
-import java.io.IOException;
+import jakarta.enterprise.context.ApplicationScoped;
 import java.io.InputStream;
 import java.util.Properties;
 import static com.demojpaapp.globals.Globals.PROPERTIES_FILE_NAME;
 
-public class FileReader {
-    public static Properties properties = getPropertiesFile();
-    public static Properties getPropertiesFile() {
+@ApplicationScoped
+public class AppProperties {
+    public Properties file() {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         InputStream inputSream = classLoader.getResourceAsStream(PROPERTIES_FILE_NAME);
         Properties props = new Properties();
