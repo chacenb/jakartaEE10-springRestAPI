@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="jakartaEE10_JAX-RS_RestAPI:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>jakartaEE10_JAX-RS_RestAPI</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="demoJpaJaxrsApi.war">
+      <element id="artifact" artifact-name="jakartaEE10_JAX-RS_RestAPI:war exploded" />
+    </root>
+  </artifact>
+</component>
