@@ -13,6 +13,5 @@ public interface IHelloService {
 
     public Employee DeleteEmployee(Long empId);
 
-
     void readPropertiesUsingMicroProfile();
 }

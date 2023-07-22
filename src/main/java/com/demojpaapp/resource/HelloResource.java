@@ -1,11 +1,9 @@
 package com.demojpaapp.resource;
 
-import com.demojpaapp.common.AppProperties;
 import com.demojpaapp.entity.Employee;
 import com.demojpaapp.common.Response;
 import com.demojpaapp.resource.ifaces.IHelloResource;
 import com.demojpaapp.service.HelloService;
-import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.apache.logging.log4j.LogManager;

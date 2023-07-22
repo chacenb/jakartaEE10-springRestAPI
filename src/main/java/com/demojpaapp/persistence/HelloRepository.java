@@ -1,5 +1,6 @@
 package com.demojpaapp.persistence;
 
+import com.demojpaapp.common.Resources;
 import com.demojpaapp.entity.Employee;
 import com.demojpaapp.persistence.ifaces.IHelloRepository;
 import com.demojpaapp.service.HelloService;
@@ -7,6 +8,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.enterprise.inject.Default;
 import jakarta.inject.Inject;
 import jakarta.persistence.*;
 import org.apache.logging.log4j.LogManager;
@@ -19,17 +21,26 @@ import java.util.List;
 @SessionScoped
 public class HelloRepository implements IHelloRepository, Serializable {
     private static final Logger LOG = LogManager.getLogger(HelloService.class);
+
+//    @Inject
+//    private Resources properties;
+
+//    @SuppressWarnings("CdiUnproxyableBeanTypesInspection")
+//    @Inject
+//    @Default
+//    private EntityManager em;
+
+//    WORKING
     private EntityManagerFactory entityManagerFactory;
     private EntityManager em;
 
     /* Spring calls the methods annotated with @PostConstruct only once, just after the initialization of bean*/
     @PostConstruct
     public void initHelloRepository() {
-        LOG.info("++++++++++++  @PostConstruct");
+
+        LOG.info("++++++++++++  initHelloRepository +++++++++++++");
         entityManagerFactory = Persistence.createEntityManagerFactory("demojpaappdbpersistenceunit");
         em = entityManagerFactory.createEntityManager();
-
-        LOG.info(">>>> entity < {} >Manager <<<<", em);
     }
 
     /* A method annotated with @PreDestroy runs only once, just before Spring removes our bean from the application context.*/

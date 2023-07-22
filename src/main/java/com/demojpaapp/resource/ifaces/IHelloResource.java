@@ -20,7 +20,6 @@ public interface IHelloResource {
     public Response readPropertiesUsingMicroProfile();
 
 
-
     @GET
     @Path("/allEmployees")
     @Produces(MediaType.APPLICATION_JSON)
