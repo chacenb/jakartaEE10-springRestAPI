@@ -1,0 +1,93 @@
+{
+	"info": {
+		"_postman_id": "faeb7ce7-61e6-45f6-bf11-ab5484aff670",
+		"name": "demo.JPA.App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "index",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/demoJpaJaxrsApi/api",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"demoJpaJaxrsApi",
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "readProperties",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/demoJpaJaxrsApi/api/readProperties",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"demoJpaJaxrsApi",
+						"api",
+						"readProperties"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAllEmployees",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/demoJpaJaxrsApi/api/allEmployees",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"demoJpaJaxrsApi",
+						"api",
+						"allEmployees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create an Employe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\":\"Aczx\",\r\n    \"lastName\":\"Boriszx\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/demoJpaJaxrsApi/api/createEmployee",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"demoJpaJaxrsApi",
+						"api",
+						"createEmployee"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
