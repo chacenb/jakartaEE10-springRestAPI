@@ -22,34 +22,43 @@ import java.util.List;
 public class HelloRepository implements IHelloRepository, Serializable {
     private static final Logger LOG = LogManager.getLogger(HelloService.class);
 
-//    @Inject
-//    private Resources properties;
 
-//    @SuppressWarnings("CdiUnproxyableBeanTypesInspection")
-//    @Inject
-//    @Default
+//    WORKING 100% :  but not efficient
+//    private EntityManagerFactory entityManagerFactory;
 //    private EntityManager em;
+//
+//    @PostConstruct
+//    public void initHelloRepository() {
+//        LOG.info("++++++++++++  initHelloRepository +++++++++++++");
+//        entityManagerFactory = Persistence.createEntityManagerFactory("demojpaappdbpersistenceunit");
+//        em = entityManagerFactory.createEntityManager();
+//    }
+//    @PreDestroy
+//    public void closeEntityManagerFactory() {
+//        LOG.info("----------------- @PreDestroy");
+//        em.close();
+//        entityManagerFactory.close();
+//    }
 
-//    WORKING
-    private EntityManagerFactory entityManagerFactory;
+
+    //    WORKING 100% :  but not efficient
+    @SuppressWarnings("CdiUnproxyableBeanTypesInspection")
+    @Inject
     private EntityManager em;
+//
+//    @PostConstruct
+//    public void initHelloRepository() {
+//        LOG.info("++++++++++++  initHelloRepository +++++++++++++");
+//        entityManagerFactory = Persistence.createEntityManagerFactory("demojpaappdbpersistenceunit");
+//        em = entityManagerFactory.createEntityManager();
+//    }
+//    @PreDestroy
+//    public void closeEntityManagerFactory() {
+//        LOG.info("----------------- @PreDestroy");
+//        em.close();
+//        entityManagerFactory.close();
+//    }
 
-    /* Spring calls the methods annotated with @PostConstruct only once, just after the initialization of bean*/
-    @PostConstruct
-    public void initHelloRepository() {
-
-        LOG.info("++++++++++++  initHelloRepository +++++++++++++");
-        entityManagerFactory = Persistence.createEntityManagerFactory("demojpaappdbpersistenceunit");
-        em = entityManagerFactory.createEntityManager();
-    }
-
-    /* A method annotated with @PreDestroy runs only once, just before Spring removes our bean from the application context.*/
-    @PreDestroy
-    public void closeEntityManagerFactory() {
-        LOG.info("----------------- @PreDestroy");
-        em.close();
-        entityManagerFactory.close();
-    }
 
     @Override
     public Employee createEmployee(Employee employee) {

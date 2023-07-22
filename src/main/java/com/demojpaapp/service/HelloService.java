@@ -43,10 +43,6 @@ public class HelloService implements IHelloService, Serializable {
     @CustomProperty
     private Properties propFile;
 
-//    private final String CHACE_PROPERTY = readFromProducesMethod.getProperty("CHACE_PROPERTY");
-//    private final String CHACE_PROPERTY2 = readFromProducesMethod.getProperty("CHACE_PROPERTY2");
-//    private String anotherProperty;
-
     @PostConstruct
     public void readFromPropertiesFile() {
         System.out.println("+++++ INSIDE HELLO SERVICE read property is " + propFile);

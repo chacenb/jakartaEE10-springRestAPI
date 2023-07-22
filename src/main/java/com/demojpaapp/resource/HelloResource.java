@@ -17,16 +17,16 @@ public class HelloResource implements IHelloResource {
     @Inject
     private HelloService hService;
 
-    public Response readPropertiesUsingMicroProfile() {
-        hService.readPropertiesUsingMicroProfile();
-        return new Response();
-    }
-
     public jakarta.ws.rs.core.Response index() {
         return jakarta.ws.rs.core.Response.status(200).header("Access-Control-Allow-Origin", "*")
                 .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
                 .header("Access-Control-Allow-Credentials", "true")
                 .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD").entity("").build();
+    }
+
+    public Response readPropertiesUsingMicroProfile() {
+        hService.readPropertiesUsingMicroProfile();
+        return new Response();
     }
 
     public Response getAllEmployees() {
