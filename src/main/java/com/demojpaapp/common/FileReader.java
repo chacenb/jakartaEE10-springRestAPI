@@ -10,11 +10,11 @@ public class FileReader {
     public static Properties getPropertiesFile() {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         InputStream inputSream = classLoader.getResourceAsStream(PROPERTIES_FILE_NAME);
-        Properties properties = new Properties();
+        Properties props = new Properties();
         try {
-            properties.load(inputSream);
-            return properties;
-        } catch (IOException e) {
+            props.load(inputSream);
+            return props;
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
