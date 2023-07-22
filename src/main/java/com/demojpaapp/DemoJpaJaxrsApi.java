@@ -6,8 +6,13 @@ JAKARTA PERSISTENCE 3.1 DOC : https://jakarta.ee/specifications/persistence/3.1/
 * */
 package com.demojpaapp;
 
+import com.demojpaapp.resource.HelloResource;
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
+
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 @ApplicationPath("/api")
 public class DemoJpaJaxrsApi extends Application {

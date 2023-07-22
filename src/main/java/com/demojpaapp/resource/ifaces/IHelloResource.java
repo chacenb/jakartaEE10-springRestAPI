@@ -15,6 +15,13 @@ public interface IHelloResource {
     public jakarta.ws.rs.core.Response index();
 
     @GET
+    @Path("/readProperties")
+    @Produces({ MediaType.TEXT_PLAIN })
+    public Response readPropertiesUsingMicroProfile();
+
+
+
+    @GET
     @Path("/allEmployees")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllEmployees();
