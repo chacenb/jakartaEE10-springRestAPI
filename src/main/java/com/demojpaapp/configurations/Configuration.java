@@ -1,4 +1,4 @@
-package com.demojpaapp.common;
+package com.demojpaapp.configurations;
 
 import com.demojpaapp.service.HelloService;
 import jakarta.annotation.PostConstruct;
@@ -6,7 +6,6 @@ import jakarta.annotation.PreDestroy;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.context.Dependent;
 import jakarta.enterprise.context.RequestScoped;
-import jakarta.enterprise.context.SessionScoped;
 import jakarta.enterprise.inject.Default;
 import jakarta.enterprise.inject.Disposes;
 import jakarta.enterprise.inject.Produces;
@@ -23,7 +22,7 @@ import static com.demojpaapp.globals.Globals.PERSIST_UNIT_NAME;
 import static com.demojpaapp.globals.Globals.PROPERTIES_FILE_NAME;
 
 @ApplicationScoped
-public class Resources {
+public class Configuration {
 
     private static final Logger LOG = LogManager.getLogger(HelloService.class);
     private EntityManagerFactory entityManagerFactory;
@@ -33,8 +32,7 @@ public class Resources {
         LOG.info("+++++++++++++++++++++++++++++++++++++++++");
         LOG.info("++++ RESOURCES CLASS INSTANTIATED +++++++");
         LOG.info("+++++++++++++++++++++++++++++++++++++++++");
-//        entityManagerFactory = Persistence.createEntityManagerFactory(PERSIST_UNIT_NAME);
-        entityManagerFactory = Persistence.createEntityManagerFactory("demojpaappdbpersistenceunit");
+        entityManagerFactory = Persistence.createEntityManagerFactory(PERSIST_UNIT_NAME);
         LOG.info("+++++ E.M.FACTORY HAS VALUE {} ++++++++", entityManagerFactory);
     }
 
@@ -44,23 +42,22 @@ public class Resources {
         LOG.info("+++++ PreDestroying Resources class +++++++++");
     }
 
-    /* first way to inject properties file */
-    public Properties file() {
+    /* first way to inject properties file : WORKS FINE 100%
+    * using this class as a bean that is going to be inkected
+    * and then use this method to read property */
+    /*public Properties file() {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         InputStream inputSream = classLoader.getResourceAsStream(PROPERTIES_FILE_NAME);
         Properties props = new Properties();
         try {
             props.load(inputSream);
             return props;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
+        } catch (Exception e) { throw new RuntimeException(e); }
+    }*/
 
 
-    /* inject properties file using producer method */
-    @Produces
-    @CustomProperty
+    @Produces /* inject properties file ONCE using producer method */
+    @PropertyQualifier
     @Dependent
     public Properties loadPropertiesFile() {
         LOG.info("++++ CREATING PROPERTIES FILE BEAN +++++++");

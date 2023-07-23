@@ -1,14 +1,9 @@
 package com.demojpaapp.persistence;
 
-import com.demojpaapp.common.Resources;
 import com.demojpaapp.entity.Employee;
 import com.demojpaapp.persistence.ifaces.IHelloRepository;
 import com.demojpaapp.service.HelloService;
-import jakarta.annotation.PostConstruct;
-import jakarta.annotation.PreDestroy;
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.context.SessionScoped;
-import jakarta.enterprise.inject.Default;
 import jakarta.inject.Inject;
 import jakarta.persistence.*;
 import org.apache.logging.log4j.LogManager;

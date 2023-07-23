@@ -1,8 +1,6 @@
 package com.demojpaapp.service;
 
-import com.demojpaapp.common.CustomProperty;
-//import com.demojpaapp.common.CustomProperties;
-//import com.demojpaapp.common.CustomProperty;
+import com.demojpaapp.configurations.PropertyQualifier;
 import com.demojpaapp.entity.Employee;
 import com.demojpaapp.persistence.HelloRepository;
 import com.demojpaapp.service.ifaces.IHelloService;
@@ -21,14 +19,16 @@ import java.util.Properties;
 public class HelloService implements IHelloService, Serializable {
 
     private static final Logger LOG = LogManager.getLogger(HelloService.class);
-
-    private String CHACE_PROPERTY;
+    private String STRING_PROPERTY;
+    private Integer INT_PROPERTY;
+    private Boolean BOOLEAN_PROPERTY;
     private String CHACE_PROPERTY2;
     private String anotherProperty;
 
     @Inject
     private HelloRepository helloRepository;
 
+//--------------------------------------------------------
 //    WORKING 100% TOO
 //    @Inject
 //    private Resources properties;
@@ -38,16 +38,19 @@ public class HelloService implements IHelloService, Serializable {
 //        CHACE_PROPERTY2 = properties.file().getProperty("CHACE_PROPERTY2");
 //        LOG.info("INSIDE HELLO SERVICE read property is {}", properties);
 //    }
+//--------------------------------------------------------
 
-    @Inject
-    @CustomProperty
-    private Properties propFile;
+    @Inject /* inject properties file then read props. values inside @PostConstruct */
+    @PropertyQualifier
+    private Properties properties;
 
     @PostConstruct
     public void readFromPropertiesFile() {
-        System.out.println("+++++ INSIDE HELLO SERVICE read property is " + propFile);
-        CHACE_PROPERTY = propFile.getProperty("CHACE_PROPERTY");
-        CHACE_PROPERTY2 = propFile.getProperty("CHACE_PROPERTY2");
+        System.out.println("+++++ INSIDE HELLO SERVICE read property is " + properties);
+        STRING_PROPERTY = properties.getProperty("STRING_PROPERTY");
+        INT_PROPERTY = Integer.parseInt(properties.getProperty("INT_PROPERTY"));
+        BOOLEAN_PROPERTY = Boolean.parseBoolean(properties.getProperty("BOOLEAN_PROPERTY"));
+        CHACE_PROPERTY2 = properties.getProperty("CHACE_PROPERTY2");
     }
 
     @Override
@@ -79,8 +82,10 @@ public class HelloService implements IHelloService, Serializable {
         System.out.println("***************************************************");
         System.out.println("************ READING DB PROPERTIES VALUES **********");
         System.out.println("***************************************************");
-        LOG.info("chaceNameFromPropertiesFile is {}", CHACE_PROPERTY);
-        LOG.info("chaceNameFromPropertiesFile 2 is {}", CHACE_PROPERTY2);
+        LOG.info("STRING_PROPERTY is = {} of type {}", STRING_PROPERTY, STRING_PROPERTY.getClass());
+        LOG.info("INT_PROPERTY is = {} of type {}", INT_PROPERTY, INT_PROPERTY.getClass());
+        LOG.info("BOOLEAN_PROPERTY is = {} of type {}", BOOLEAN_PROPERTY, BOOLEAN_PROPERTY.getClass());
+        LOG.info("inject CHACE_PROPERTY2 using deltaspike-core-api = {}", CHACE_PROPERTY2);
         LOG.info("anotherProperty is {}", anotherProperty);
         System.out.println("***************************************************");
     }
